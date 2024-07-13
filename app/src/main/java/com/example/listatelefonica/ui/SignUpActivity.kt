@@ -1,16 +1,16 @@
-package com.example.listatelefonica
+package com.example.listatelefonica.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.listatelefonica.databinding.ActivityLoginBinding
+import com.example.listatelefonica.R
+import com.example.listatelefonica.databinding.ActivitySignUpBinding
 
-class LoginActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
     private val binding by lazy {
-        ActivityLoginBinding.inflate(layoutInflater)
+        ActivitySignUpBinding.inflate(layoutInflater)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +22,8 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        binding.txtSignup.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+        binding.txtAlready.setOnClickListener {
+            finish()
         }
     }
 }

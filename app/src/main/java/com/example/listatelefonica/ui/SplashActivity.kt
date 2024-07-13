@@ -1,4 +1,4 @@
-package com.example.listatelefonica
+package com.example.listatelefonica.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.example.listatelefonica.R
 import com.example.listatelefonica.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 1500)
 
