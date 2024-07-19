@@ -10,12 +10,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "contact.db", null,
     override fun onCreate(database: SQLiteDatabase?) {
 
         val sql = arrayOf(
-            "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)",
+            "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)",
             "INSERT INTO users (username,password) VALUES ('admin', 'admin')"
         )
 
         try {
-            sql.forEach { eachSql->
+            sql.forEach { eachSql ->
                 database?.execSQL(eachSql)
             }
         } catch (e: SQLException) {
@@ -26,7 +26,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "contact.db", null,
     }
 
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("Not yet implemented")
+    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
+        db?.execSQL("DROP TABLE IF EXISTS users")
+        onCreate(db)
     }
 }

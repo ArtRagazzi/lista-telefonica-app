@@ -15,6 +15,12 @@ class UserDAO(context: Context) : IUserDAO {
 
     override fun insert(user: UserModel): Boolean {
 
+        //Verifica se o usuario ja existe
+        if(findUserByUsername(user.username)!=null){
+            Log.i("info_db", "Erro ao executar insert, Usuario ja existente")
+            return false
+        }
+
         //Cria um Objeto chave valor
         val value = ContentValues()
         value.put("username", user.username)
@@ -108,6 +114,29 @@ class UserDAO(context: Context) : IUserDAO {
     fun findUserByUsernameAndPassword(username:String, password:String): UserModel? {
         val sql = "SELECT * FROM users WHERE username = ? AND password = ?"
         val cursor = readCommands.rawQuery(sql, arrayOf(username,password))
+
+        return try{
+            if(cursor.moveToFirst()) {
+                val iId = cursor.getColumnIndex("id")
+                val iUsername = cursor.getColumnIndex("username")
+                val iPassword = cursor.getColumnIndex("password")
+
+                val idUser = cursor.getInt(iId)
+                val username = cursor.getString(iUsername)
+                val password = cursor.getString(iPassword)
+
+                UserModel(idUser,username,password)
+            }else{
+                return null
+            }
+        }finally {
+            cursor.close()
+        }
+    }
+
+    fun findUserByUsername(username:String): UserModel? {
+        val sql = "SELECT * FROM users WHERE username = ?"
+        val cursor = readCommands.rawQuery(sql, arrayOf(username))
 
         return try{
             if(cursor.moveToFirst()) {
