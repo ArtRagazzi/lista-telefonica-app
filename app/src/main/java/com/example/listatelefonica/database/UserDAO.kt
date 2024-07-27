@@ -13,18 +13,18 @@ class UserDAO(context: Context) : IUserDAO {
     private val readCommands = DBHelper(context).readableDatabase
 
 
-    override fun insert(user: UserModel): Boolean {
+    override fun insert(userModel: UserModel): Boolean {
 
         //Verifica se o usuario ja existe
-        if(findUserByUsername(user.username)!=null){
+        if(findUserByUsername(userModel.username)!=null){
             Log.i("info_db", "Erro ao executar insert, Usuario ja existente")
             return false
         }
 
         //Cria um Objeto chave valor
         val value = ContentValues()
-        value.put("username", user.username)
-        value.put("password", user.password)
+        value.put("username", userModel.username)
+        value.put("password", userModel.password)
 
         try {
             writeCommands.insert("users", null, value)
@@ -36,12 +36,12 @@ class UserDAO(context: Context) : IUserDAO {
         return true
     }
 
-    override fun update(user: UserModel): Boolean {
+    override fun update(userModel: UserModel): Boolean {
         val value = ContentValues()
-        value.put("username", user.username)
-        value.put("password", user.password)
+        value.put("username", userModel.username)
+        value.put("password", userModel.password)
 
-        val oldUserId = arrayOf(user.id.toString())
+        val oldUserId = arrayOf(userModel.id.toString())
 
         try {
             //Substitui ? pelo parametro oldUSerId

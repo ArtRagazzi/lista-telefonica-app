@@ -11,8 +11,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "contact.db", null,
 
         val sql = arrayOf(
             "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)",
-            "INSERT INTO users (username,password) VALUES ('admin', 'admin')"
+           "INSERT INTO users (username,password) VALUES ('admin', 'admin')",
+            "CREATE TABLE contact (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT,address TEXT,email TEXT, phone INTEGER,imgUrl TEXT)",
+            "INSERT INTO contact (name,address,email,phone,imgUrl) VALUES ('Contato Teste', 'Endereco Teste', 'teste@gmail.com','123123','testeurl')"
         )
+
 
         try {
             sql.forEach { eachSql ->
