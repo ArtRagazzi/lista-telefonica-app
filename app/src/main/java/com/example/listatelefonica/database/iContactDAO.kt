@@ -12,5 +12,5 @@ interface iContactDAO {
 
     fun findById(id: Int): ContactModel
 
-    fun findAll():List<ContactModel>
+    fun findAll():ArrayList<ContactModel>
 }

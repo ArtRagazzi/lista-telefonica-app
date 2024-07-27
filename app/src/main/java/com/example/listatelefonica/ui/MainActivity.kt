@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,14 +15,21 @@ import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.listatelefonica.R
+import com.example.listatelefonica.database.ContactDAO
 import com.example.listatelefonica.databinding.ActivityMainBinding
+import com.example.listatelefonica.model.ContactModel
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    private lateinit var contactList:ArrayList<ContactModel>
+    private lateinit var adapter: ArrayAdapter<ContactModel>
 
+    private val contactDAO by lazy {
+        ContactDAO(this)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +42,28 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
         //Ativa a Toolbar
         setSupportActionBar(binding.tbContact)
 
+        configListView()
+
+        binding.lvContact.setOnItemClickListener { _, _, position, _ ->
+            val intent= Intent(this, ContactActivity::class.java)
+            intent.putExtra("id", contactList[position].id)
+            startActivity(intent)
+        }
+
+        binding.fabAdd.setOnClickListener {
+            startActivity(Intent(this,NewContactActivity::class.java))
+        }
+
     }
+
+
+
+
+
 
 
     //Menu
@@ -62,8 +88,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-
-     fun logout() {
+    private fun configListView(){
+        //ListView
+        contactList = contactDAO.findAll()
+        adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,contactList)
+        binding.lvContact.adapter = adapter
+    }
+    private fun logout() {
         AlertDialog.Builder(this)
             .setTitle("Logout")
             .setMessage("Do you really want to Log out?")

@@ -16,9 +16,6 @@ class SignUpActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
     }
-    private val db by lazy {
-        DBHelper(this)
-    }
 
     private val userDAO by lazy {
         UserDAO(this)

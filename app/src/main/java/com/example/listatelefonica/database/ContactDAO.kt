@@ -73,7 +73,7 @@ class ContactDAO(context: Context) : iContactDAO{
                 val iAddress = cursor.getColumnIndex("address")
                 val iEmail = cursor.getColumnIndex("email")
                 val iPhone = cursor.getColumnIndex("phone")
-                val iImgUrl = cursor.getColumnIndex("imageId")
+                val iImgUrl = cursor.getColumnIndex("imgUrl")
 
                 val idContact = cursor.getInt(iId)
                 val nameContact = cursor.getString(iName)
@@ -90,8 +90,8 @@ class ContactDAO(context: Context) : iContactDAO{
         }
     }
 
-    override fun findAll(): List<ContactModel> {
-        val contactList = mutableListOf<ContactModel>()
+    override fun findAll(): ArrayList<ContactModel> {
+        val contactList = arrayListOf<ContactModel>()
         val sql = "SELECT * FROM contact;"
         val cursor = readCommands.rawQuery(sql, null)
 
@@ -100,7 +100,7 @@ class ContactDAO(context: Context) : iContactDAO{
         val iAddress = cursor.getColumnIndex("address")
         val iEmail = cursor.getColumnIndex("email")
         val iPhone = cursor.getColumnIndex("phone")
-        val iImgUrl = cursor.getColumnIndex("imageId")
+        val iImgUrl = cursor.getColumnIndex("imgUrl")
 
         while (cursor.moveToNext()) {
             val idContact = cursor.getInt(iId)
