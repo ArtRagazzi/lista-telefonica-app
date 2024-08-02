@@ -1,5 +1,6 @@
 package com.example.listatelefonica.ui
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -8,7 +9,10 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
@@ -30,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private val contactDAO by lazy {
         ContactDAO(this)
     }
+    private lateinit var result:ActivityResultLauncher<Intent>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +60,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabAdd.setOnClickListener {
-            startActivity(Intent(this,NewContactActivity::class.java))
+           result.launch(Intent(this,NewContactActivity::class.java))
+        }
+
+        result = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if(it.data!=null && it.resultCode == Activity.RESULT_OK){
+                updateListView()
+            }else if(it.data!=null && it.resultCode == Activity.RESULT_CANCELED){
+                Toast.makeText(this,"Operation Canceled", Toast.LENGTH_LONG).show()
+            }else{
+                //caso Null
+                Toast.makeText(this,"Caso Null", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
@@ -94,6 +110,13 @@ class MainActivity : AppCompatActivity() {
         adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,contactList)
         binding.lvContact.adapter = adapter
     }
+    private fun updateListView(){
+        contactList.clear()
+        contactList.addAll(contactDAO.findAll())
+        adapter.notifyDataSetChanged()
+    }
+
+
     private fun logout() {
         AlertDialog.Builder(this)
             .setTitle("Logout")

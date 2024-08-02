@@ -1,5 +1,6 @@
 package com.example.listatelefonica.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -18,6 +19,9 @@ class NewContactActivity : AppCompatActivity() {
     }
     private val  contactDAO by lazy {
         ContactDAO(this)
+    }
+    private val i by lazy {
+        intent
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +44,13 @@ class NewContactActivity : AppCompatActivity() {
                     binding.editPhone.text.toString().toInt(),
                     selectGenderToPhoto()
                 )
+
             }
         }
 
 
         binding.btnCancel.setOnClickListener {
+            setResult(Activity.RESULT_CANCELED, i)
             finish()
         }
     }
@@ -62,6 +68,7 @@ class NewContactActivity : AppCompatActivity() {
             )
         ) {
             Toast.makeText(this, "Contact added successfully", Toast.LENGTH_LONG).show()
+            setResult(Activity.RESULT_OK, i)
             finish()
         } else {
             Toast.makeText(this, "Error, Contact not added", Toast.LENGTH_SHORT).show()
@@ -77,7 +84,6 @@ class NewContactActivity : AppCompatActivity() {
 
 
         if (name.isNotEmpty() && address.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && selectGenderToPhoto()!= "") {
-            Log.i("tesst","Tudo certo")
             return true
         } else {
             //Para tirar a mensagem de erro quando digitar novamente
