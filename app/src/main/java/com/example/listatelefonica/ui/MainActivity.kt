@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         binding.lvContact.setOnItemClickListener { _, _, position, _ ->
             val intent= Intent(this, ContactActivity::class.java)
             intent.putExtra("id", contactList[position].id)
-            startActivity(intent)
+            result.launch(intent)
         }
 
         binding.fabAdd.setOnClickListener {
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Operation Canceled", Toast.LENGTH_LONG).show()
             }else{
                 //caso Null
-                Toast.makeText(this,"Caso Null", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Not Possible", Toast.LENGTH_LONG).show()
             }
         }
 

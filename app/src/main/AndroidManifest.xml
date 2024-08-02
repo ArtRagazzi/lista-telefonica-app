@@ -18,6 +18,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.ContactActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SignUpActivity"

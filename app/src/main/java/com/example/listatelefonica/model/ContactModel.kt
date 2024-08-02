@@ -2,9 +2,9 @@ package com.example.listatelefonica.model
 
 data class ContactModel(
     val id: Int = 0,
-    val name:String = "",
-    val address:String = "",
-    val email:String ="",
-    val phone:Int =0,
-    val imageId:String = ""
+    var name:String = "",
+    var address:String = "",
+    var email:String ="",
+    var phone:String = "",
+    var imageId:String = ""
 )

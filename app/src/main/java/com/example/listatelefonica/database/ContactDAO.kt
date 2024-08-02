@@ -79,7 +79,7 @@ class ContactDAO(context: Context) : iContactDAO{
                 val nameContact = cursor.getString(iName)
                 val addressContact = cursor.getString(iAddress)
                 val emailContact = cursor.getString(iEmail)
-                val phoneContact = cursor.getInt(iPhone)
+                val phoneContact = cursor.getString(iPhone)
                 val imgContact = cursor.getString(iImgUrl)
                 ContactModel(idContact,nameContact,addressContact,emailContact,phoneContact,imgContact)
             }else{
@@ -107,7 +107,7 @@ class ContactDAO(context: Context) : iContactDAO{
             val nameContact = cursor.getString(iName)
             val addressContact = cursor.getString(iAddress)
             val emailContact = cursor.getString(iEmail)
-            val phoneContact = cursor.getInt(iPhone)
+            val phoneContact = cursor.getString(iPhone)
             val imgContact = cursor.getString(iImgUrl)
             contactList.add(ContactModel(idContact,nameContact,addressContact,emailContact,phoneContact,imgContact))
         }

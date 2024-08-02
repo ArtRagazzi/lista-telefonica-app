@@ -41,7 +41,7 @@ class NewContactActivity : AppCompatActivity() {
                     binding.editName.text.toString(),
                     binding.editName.text.toString(),
                     binding.editEmail.text.toString(),
-                    binding.editPhone.text.toString().toInt(),
+                    binding.editPhone.text.toString(),
                     selectGenderToPhoto()
                 )
 
@@ -56,7 +56,7 @@ class NewContactActivity : AppCompatActivity() {
     }
 
 
-    private fun addContact(name: String, address: String, email: String, phone: Int, img: String) {
+    private fun addContact(name: String, address: String, email: String, phone: String, img: String) {
         if (contactDAO.insert(
                 ContactModel(
                     name = name,
