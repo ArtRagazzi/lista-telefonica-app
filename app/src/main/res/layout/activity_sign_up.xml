@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#6750A3" />
+        app:tint="@color/primaria" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="4dp"
-                android:drawableTint="#6750A3"
-                android:hint="Username" />
+                android:drawableTint="@color/secundaria"
+                android:hint="@string/username" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -69,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="4dp"
-                android:drawableTint="#6750A3"
-                android:hint="Password"
+                android:drawableTint="@color/secundaria"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,8 +92,8 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="4dp"
-                android:drawableTint="#6750A3"
-                android:hint="Confirm Password"
+                android:drawableTint="@color/secundaria"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +113,7 @@
             android:id="@+id/txtAlready"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account? Log in"
+            android:text="@string/already_have_an_account_log_in"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
             app:layout_constraintStart_toStartOf="@+id/btnSignUp"

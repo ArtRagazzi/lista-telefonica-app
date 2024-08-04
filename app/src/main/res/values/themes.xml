@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ListaTelefonica" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primaria</item>
+        <item name="colorOnPrimary">@color/onPrimaria</item>
+        <item name="colorSecondary">@color/secundaria</item>
     </style>
 
     <style name="Theme.ListaTelefonica" parent="Base.Theme.ListaTelefonica" />

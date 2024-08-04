@@ -19,14 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabEditPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/ivContact"
-        app:layout_constraintEnd_toEndOf="@+id/ivContact" />
-
     <EditText
         android:id="@+id/editName"
         android:layout_width="wrap_content"
@@ -40,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivContact" />
+        app:layout_constraintTop_toBottomOf="@+id/ivContact"
+        android:drawableTint="@color/secundaria"/>
 
     <EditText
         android:id="@+id/editAddress"
@@ -55,7 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editName" />
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        android:drawableTint="@color/secundaria"/>
 
     <EditText
         android:id="@+id/editEmail"
@@ -70,7 +64,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editAddress"
+        android:drawableTint="@color/secundaria"/>
 
     <EditText
         android:id="@+id/editPhone"
@@ -86,7 +81,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmail"
+        android:drawableTint="@color/secundaria"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSave"
@@ -97,7 +93,9 @@
         app:layout_constraintEnd_toStartOf="@+id/fabDelete"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/editPhone"
+        app:tint="@color/onPrimaria"
+        android:backgroundTint="@color/primaria"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabDelete"
@@ -108,7 +106,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/fabSave"
-        app:layout_constraintTop_toTopOf="@+id/fabSave" />
+        app:layout_constraintTop_toTopOf="@+id/fabSave"
+        app:tint="@color/onPrimaria"
+        android:backgroundTint="@color/primaria"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="@string/name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,7 +39,7 @@
             android:id="@+id/editAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Address" />
+            android:hint="@string/address" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +56,7 @@
             android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,7 @@
             android:id="@+id/editPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
+            android:hint="@string/phone"
             android:maxLength="15"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,13 +93,13 @@
             android:id="@+id/rbMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/rbFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="@string/female" />
     </RadioGroup>
 
     <Button
@@ -108,8 +108,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:drawableEnd="@drawable/ic_add"
-        android:drawableTint="@color/white"
-        android:text="Add"
+        android:drawableTint="@color/onPrimaria"
+        android:text="@string/add"
         app:layout_constraintEnd_toEndOf="@+id/rgGender"
         app:layout_constraintStart_toStartOf="@+id/rgGender"
         app:layout_constraintTop_toBottomOf="@+id/rgGender" />
@@ -119,8 +119,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_back"
-        android:drawableTint="@color/white"
-        android:text="Cancel"
+        android:drawableTint="@color/onPrimaria"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="@+id/btnAdd"
         app:layout_constraintStart_toStartOf="@+id/btnAdd"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd"

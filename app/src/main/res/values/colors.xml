@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="cinza">#DDDDDD</color>
+
+    <color name="primaria">#71E2EF</color>
+    <color name="onPrimaria">#121149</color>
+    <color name="secundaria">#38C6D9</color>
+
+
 </resources>

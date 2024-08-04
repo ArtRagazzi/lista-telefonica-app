@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#6750A3"
+        app:tint="@color/primaria"
         />
 
 
@@ -26,10 +26,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLogo"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tfUsername"
@@ -45,10 +45,10 @@
                 android:id="@+id/editUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="4dp"
-                android:drawableTint="#6750A3"/>
+                android:drawableTint="@color/secundaria"
+                android:hint="@string/username" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -67,18 +67,18 @@
                 android:id="@+id/editPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="4dp"
-                android:drawableTint="#6750A3"/>
+                android:drawableTint="@color/secundaria"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/cbKeepLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keep me Logged"
+            android:text="@string/keep_me_logged"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="@+id/tfPassword"
             app:layout_constraintTop_toBottomOf="@+id/tfPassword" />
@@ -87,37 +87,40 @@
             android:id="@+id/btnLogin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Logar"
+            android:text="@string/login"
+            android:textColor="@color/onPrimaria"
             app:layout_constraintEnd_toEndOf="@+id/tfPassword"
             app:layout_constraintStart_toStartOf="@+id/tfPassword"
             app:layout_constraintTop_toBottomOf="@+id/cbKeepLogin" />
+
+        <TextView
+            android:id="@+id/txtDont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="@color/onPrimaria"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/txtSignup"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             android:id="@+id/txtSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Don't have account? Sign up!"
-            android:textColor="#505050"
+            android:text="@string/sign_up"
+            android:textColor="@color/primaria"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            app:layout_constraintStart_toStartOf="@+id/cbKeepLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtDont"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-
-        <TextView
-            android:id="@+id/txtRecovery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Recovery Password"
-            android:textColor="#505050"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/txtSignup"
-            app:layout_constraintStart_toStartOf="@+id/txtSignup"
-            app:layout_constraintTop_toBottomOf="@+id/txtSignup" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

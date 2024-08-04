@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista Telefonica</string>
+    <string name="don_t_have_an_account">Não Tem um Conta?</string>
+    <string name="sign_up">Registre-se</string>
+    <string name="login">Logar</string>
+    <string name="keep_me_logged">Manter Logado</string>
+    <string name="password">Senha</string>
+    <string name="username">Usuario</string>
+    <string name="contacts">Contatos</string>
+    <string name="add">Adicionar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="female">Feminino</string>
+    <string name="male">Masculino</string>
+    <string name="phone">Telefone</string>
+    <string name="email">E-mail</string>
+    <string name="address">Endereço</string>
+    <string name="name">Nome</string>
+    <string name="confirm_password">Confrime sua Senha</string>
+    <string name="already_have_an_account_log_in">Ja possui uma conta? Faça o Login</string>
+    <string name="contact_list">Lista Telefonica</string>
+</resources>

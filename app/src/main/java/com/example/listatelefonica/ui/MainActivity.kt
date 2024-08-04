@@ -6,19 +6,19 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listatelefonica.R
+import com.example.listatelefonica.adapter.ContactListAdapter
+import com.example.listatelefonica.adapter.listener.ContactOnClickListener
 import com.example.listatelefonica.database.ContactDAO
 import com.example.listatelefonica.databinding.ActivityMainBinding
 import com.example.listatelefonica.model.ContactModel
@@ -28,8 +28,11 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private lateinit var contactList:ArrayList<ContactModel>
-    private lateinit var adapter: ArrayAdapter<ContactModel>
+    private val contactList by lazy {
+        ArrayList<ContactModel>()
+    }
+    //private lateinit var adapter: ArrayAdapter<ContactModel>
+    private lateinit var adapter:ContactListAdapter
 
     private val contactDAO by lazy {
         ContactDAO(this)
@@ -50,14 +53,18 @@ class MainActivity : AppCompatActivity() {
 
         //Ativa a Toolbar
         setSupportActionBar(binding.tbContact)
-
-        configListView()
-
-        binding.lvContact.setOnItemClickListener { _, _, position, _ ->
+        //configListView()
+        /*binding.lvContact.setOnItemClickListener { _, _, position, _ ->
             val intent= Intent(this, ContactActivity::class.java)
             intent.putExtra("id", contactList[position].id)
             result.launch(intent)
-        }
+        }*/
+
+        binding.rvContact.layoutManager = LinearLayoutManager(applicationContext)
+        updateList()
+
+
+
 
         binding.fabAdd.setOnClickListener {
            result.launch(Intent(this,NewContactActivity::class.java))
@@ -65,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
         result = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if(it.data!=null && it.resultCode == Activity.RESULT_OK){
-                updateListView()
+                updateList()
             }else if(it.data!=null && it.resultCode == Activity.RESULT_CANCELED){
                 Toast.makeText(this,"Operation Canceled", Toast.LENGTH_LONG).show()
             }else{
@@ -85,12 +92,6 @@ class MainActivity : AppCompatActivity() {
     //Menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-            R.id.search->{
-                return true
-            }
-            R.id.profile->{
-                return true
-            }
             R.id.logout->{
                 logout()
                 return true
@@ -104,16 +105,23 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun configListView(){
+    /*private fun configListView(){
         //ListView
         contactList = contactDAO.findAll()
         adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,contactList)
         binding.lvContact.adapter = adapter
-    }
-    private fun updateListView(){
+    }*/
+
+
+    private fun updateList(){
         contactList.clear()
         contactList.addAll(contactDAO.findAll())
-        adapter.notifyDataSetChanged()
+        adapter = ContactListAdapter(contactList, ContactOnClickListener { contact->
+            val i = Intent(applicationContext, ContactActivity::class.java)
+            i.putExtra("id", contact.id)
+            result.launch(i)
+        })
+        binding.rvContact.adapter = adapter
     }
 
 
